@@ -1,0 +1,119 @@
+﻿@using MakQR.Models.Admin
+@model LoginViewModel
+
+@* <section class="hotel-hero">
+    <div class="login-container">
+        <h2>Login</h2>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label asp-for="Email">Email</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
+</section> *@
+
+<section class="login-hero">
+    <div class="login-overlay">
+        <div class="login-container">
+            <h2>Admin Login</h2>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label asp-for="Email">Email</label>
+                    <input asp-for="Email"
+                           class="form-control login-input"
+                           placeholder="Enter email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Password">Password</label>
+                    <input asp-for="Password"
+                           type="password"
+                           class="form-control login-input"
+                           placeholder="Enter password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary login-btn">
+                    Login
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+
+
+<script>
+    document.getElementById("loginForm").addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const form = document.getElementById("loginForm");
+        const submitBtn = form.querySelector("button[type='submit']");
+        const formData = new FormData(form);
+
+        submitBtn.disabled = true;
+
+        Swal.fire({
+            title: 'Logging in...',
+            allowOutsideClick: false,
+            didOpen: () => Swal.showLoading()
+        });
+
+        try {
+            const response = await fetch('/Admin/Login', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (!response.ok) {
+                throw new Error("Server error");
+            }
+
+            const data = await response.json();
+
+            if (data.success) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Login Successful',
+                    timer: 1200,
+                    showConfirmButton: false
+                }).then(() => {
+                    window.location.href = data.redirectUrl;
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Login Failed',
+                    text: data.message || "Invalid credentials"
+                });
+            }
+        } catch (err) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Unable to login. Please try again.'
+            });
+            console.error(err);
+        } finally {
+            submitBtn.disabled = false;
+        }
+    });
+</script>
+
+
+
+

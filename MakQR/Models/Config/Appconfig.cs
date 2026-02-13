@@ -1,0 +1,13 @@
+﻿namespace MakQR.Models.Config
+{
+    public class Appconfig
+    {
+        public AdminConfiguration AdminConfig { get; set; } = new();
+    }
+
+    public class AdminConfiguration
+    {
+        public string Email { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
+    }
+}

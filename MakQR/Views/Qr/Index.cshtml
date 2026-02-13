@@ -1,0 +1,51 @@
+﻿@using MakQR.Models.Admin
+@model HotelSectionData
+@{
+    string title = string.IsNullOrWhiteSpace(Model.Title) ? "Our Hotel" : Model.Title;
+    string description = string.IsNullOrWhiteSpace(Model.Description) ? "Discover a place where comfort meets style. We welcome you to experience our hotel through the spaces and services we proudly offer." : Model.Description;
+}
+
+<section class="hotel-hero">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <img src="@Url.Content("~/images/ChatGPT_Image_Feb_3__2026__12_25_12_PM-removebg-preview.png")" alt="MH Hotel Logo" class="hero-logo">
+        <h1>@title</h1>
+
+        <p class="hero-text">
+            @description
+        </p>
+    </div>
+</section>
+<section class="image-gallery">
+    <div class="gallery-container">
+
+        <div class="gallery-item">
+            <img src="@Url.Content("~/images/image1.png")" asp-append-version="true" alt="Hotel 0">
+        </div>
+
+        <div class="gallery-item">
+            <img src="@Url.Content("~/images/image2.png")" asp-append-version="true" alt="Hotel 1">
+        </div>
+
+        <div class="gallery-item">
+            <img src="@Url.Content("~/images/image3.png")" asp-append-version="true" alt="Hotel 2">
+        </div>
+
+        <div class="gallery-item">
+            <img src="@Url.Content("~/images/image4.png")" asp-append-version="true" alt="Hotel 3">
+        </div>
+
+        <div class="gallery-item">
+            <img src="@Url.Content("~/images/image5.png")" asp-append-version="true" alt="Hotel 4">
+        </div>
+
+        <div class="gallery-item">
+            <img src="@Url.Content("~/images/image6.png")" asp-append-version="true" alt="Hotel 5">
+        </div>
+
+    </div>
+</section>
+
+
+

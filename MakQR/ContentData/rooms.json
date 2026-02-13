@@ -1,0 +1,33 @@
+{
+  "title": "ROOMS",
+  "subtitle": "Well designed and Spacious rooms",
+  "grid": [
+    {
+      "type": "image",
+      "image": "images/Room Image 1 .png"
+    },
+    {
+      "type": "image",
+      "image": "images/eee0d15d-fb4c-46c6-88a1-c51599b1d662.png"
+    },
+    {
+      "type": "image",
+      "image": "images/room3.png"
+    },
+    {
+      "type": "image",
+      "image": "images/H5.jpg"
+    },
+    {
+      "type": "text",
+      "heading": "Contemporary Comfort",
+      "description": "be inspired to rest...."
+    },
+    {
+      "type": "image",
+      "image": "images/2a21a367-124d-480c-93cb-4826bbcc54d0.png"
+    }
+  ],
+  "updatedOn": "2026-02-13T15:00:00"
+}
+

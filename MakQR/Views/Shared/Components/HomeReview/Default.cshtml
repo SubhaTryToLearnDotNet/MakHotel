@@ -1,0 +1,127 @@
+﻿@model MakQR.Models.Home.ReviewsSection
+ <section class="py-5 text-center review-section">
+
+    <h2 class="fw-bold">🏨 @Model.Title</h2>
+    <p class="text-muted mb-4">@Model.Subtitle</p>
+
+    <div id="reviewCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
+
+        <div class="carousel-inner">
+
+            <!-- Slide 1 -->
+            <div class="carousel-item active">
+                <div class="row g-3 justify-content-center">
+
+                    <div class="col-md-3">
+                        <div class="review-box">
+
+                            <span class="icon">👤</span>
+                            <h4>Pali Barman</h4>
+                            <p>I had a fantastic experience at this hotel.<br>Staff was friendly and room was spotless.</p>
+                            <div class="review-tag">Rooms 5/5 | Service 5/5</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="review-box">
+
+                            <span class="icon">👤</span>
+                            <h4>Subhajit Paul</h4>
+                            <p>The rooftop restaurant vibe was amazing. We spent most time there enjoying the view.</p>
+                            <div class="review-tag">Rooms 5/5 | Service 5/5</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="review-box">
+
+                            <span class="icon">👤</span>
+                            <h4>Vishal Dhami</h4>
+                            <p>Very clean rooms and polite staff. Comfortable and peaceful stay.</p>
+                            <div class="review-tag">Clean • Luxury • Calm</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+                <div class="row g-3 justify-content-center">
+
+                    <div class="col-md-3">
+                        <div class="review-box">
+
+                            <span class="icon">👤</span>
+                            <h4>Ankit Roy</h4>
+                            <p>Service was quick and helpful. Room was fresh and well maintained.</p>
+                            <div class="review-tag">Excellent Service</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="review-box">
+
+                            <span class="icon">👤</span>
+                            <h4>Riya Sharma</h4>
+                            <p>Loved the atmosphere. Very peaceful place to relax.</p>
+                            <div class="review-tag">Comfort • Clean</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="review-box">
+
+                            <span class="icon">👤</span>
+                            <h4>Arjun Das</h4>
+                            <p>Perfect for family stay. Safe and cozy.</p>
+                            <div class="review-tag">Family Friendly</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+
+    </div>
+</section> 
+@* <section class="review-section">
+
+    <h2>@Model.Title</h2>
+    <p>@Model.Subtitle</p>
+
+    <div class="carousel-inner">
+        @{
+            var slides = Model.Items
+            .Select((item, index) => new { item, index })
+            .GroupBy(x => x.index / Model.SlideSize);
+        }
+
+        @foreach (var slide in slides)
+        {
+            <div class="carousel-item @(slide.Key == 0 ? "active" : "")">
+                <div class="row">
+                    @foreach (var r in slide)
+                    {
+                        <div class="col-md-3">
+                            <h4>@r.item.Name</h4>
+                            <p>@Html.Raw(r.item.CommentHtml)</p>
+                            <span>@r.item.Tag</span>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+
+</section> *@

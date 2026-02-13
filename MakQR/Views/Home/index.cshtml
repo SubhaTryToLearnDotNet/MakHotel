@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -14,15 +13,12 @@
     <!--bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
 
 </head>
 <body>
-
-
     <!-- LOGO HEADER -->
     <div class="logo-header">
         <div class="logo-wrap">
@@ -30,9 +26,6 @@
             <span class="logo-text">MAK Hotel</span>
         </div>
     </div>
-
-
-
     <!-- Hero Banner -->
     <div id="hotelBanner" class="carousel slide" data-bs-ride="carousel">
 
@@ -105,43 +98,9 @@
 
     </div>
 
-    <section class="about-section">
-        <div class="about-wrapper">
+    @await Component.InvokeAsync("HomeAbout")
 
-            <!-- Text -->
-            <div class="about-content">
-                <h2>About Our Hotel</h2>
-                <p>
-                    Located in the heart of Bengaluru, our hotel offers a rare blend of city convenience and a SPLENDID VIEW of serene green surroundings — truly a rarest of rare view within the city. Designed for both business and leisure travelers, we provide comfortable rooms with modern amenities and a peaceful atmosphere. Guests can enjoy quality service, easy access to key locations, and a relaxing stay that feels calm and refreshing amid the urban landscape.
-                </p>
-            </div>
-
-            <!-- Full Image -->
-            <div class="about-image">
-                <img src="./images/banner.png" alt="Hotel Room with Green View">
-            </div>
-
-        </div>
-    </section>
-    <section class="why-us">
-        <div class="why-wraper">
-
-            <div class="why-text">
-                <h2>Why MAK Hotel?</h2>
-                <p>
-                    Recognized as the Best three star hotel in Domlur, Indiranagar, Koramangala, MAK Hotel stands out as one of the best hotels in Bangalore. The property features a stylish rooftop dining experience and thoughtfully designed rooms that create a calm and premium atmosphere. Attentive service and modern amenities ensure a seamless and pleasant stay for both business and leisure travelers.
-                </p>
-
-            </div>
-
-            <div class="why-image">
-                <img src="./images/Why MAK Hotel .png" alt="MAK Hotel View">
-            </div>
-
-        </div>
-    </section>
-
-
+    @await Component.InvokeAsync("HomeWhyUs")
 
     <section class="amenities-section">
         <h2 class="amenities-title">Amenities</h2>
@@ -214,72 +173,12 @@
         </div>
     </section>
 
-    <section class="rooms">
-        <h2 class="rooms-title">ROOMS</h2>
-        <p class="rooms-subtitle">
-            Well designed and Spacious rooms
-        </p>
+    @await Component.InvokeAsync("RoomsSection")
 
-        <div class="rooms-grid">
-            <div class="room-img"><img src="./images/Room Image 1 .png" alt=""></div>
-            <div class="room-img"><img src="./images/eee0d15d-fb4c-46c6-88a1-c51599b1d662.png" alt=""></div>
-            <div class="room-img"><img src="./images/room3.png" alt=""></div>
+    @await Component.InvokeAsync("Rooms")
 
-            <div class="room-img"><img src="./images/H5.jpg" alt=""></div>
+    @await Component.InvokeAsync("HomeEvent")
 
-
-
-            <div class="room-text">
-                <h3>Contemporary Comfort</h3>
-                <p>
-                    be inspired to rest....
-                </p>
-            </div>
-
-            <div class="room-img"><img src="./images/2a21a367-124d-480c-93cb-4826bbcc54d0.png" alt=""></div>
-        </div>
-
-
-    </section>
-    <section class="view-section">
-        <h2>The View</h2>
-        <p>
-            Enjoy refreshing green surroundings and a peaceful atmosphere that offers a welcome escape from the city’s pace.
-            From the comfort of your room or balcony, take in soothing views that create a sense of calm and relaxation, making every stay pleasant and memorable.
-        </p>
-
-        <div class="view-grid">
-            <div class="view-card">
-                <img src="./images/the view (2).png" alt="">
-                <h5>The View from Balcony</h5>
-            </div>
-
-            <div class="view-card">
-                <img src="./images/2a21a367-124d-480c-93cb-4826bbcc54d0.png" alt="">
-                <h5>The View from Room</h5>
-            </div>
-        </div>
-    </section>
-    <section class="event-section">
-        <div class="about-wrapper">
-
-            <!-- Text -->
-            <div class="event-content">
-                <h2>Events</h2>
-                <p>
-                    MAK Hotel, Bangalore offers a refined rooftop venue ideal for Birthday celebrations, Anniversaries, corporate events,
-                    and Company get-togethers. With elegant decor, curated dinning experiences, and a tranquil open-sky setting, we comfortably host events for 50+
-                    guests. Celebrate your special moments with style, comfort, and personalized hospitality.
-                </p>
-            </div>
-
-            <!-- Full Image -->
-            <div class="event-image">
-                <img src="./images/events.png" alt="Hotel Room with Green View">
-            </div>
-
-        </div>
-    </section>
     <section class="gallery-section">
         <h2>Facility And Gallery</h2>
 
@@ -295,103 +194,8 @@
             </div>
         </div>
     </section>
-    <section class="py-5 text-center review-section">
 
-        <h2 class="fw-bold">🏨 Guest Reviews</h2>
-        <p class="text-muted mb-4">What Our Guests Are Saying</p>
-
-        <div id="reviewCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
-
-            <div class="carousel-inner">
-
-                <!-- Slide 1 -->
-                <div class="carousel-item active">
-                    <div class="row g-3 justify-content-center">
-
-                        <div class="col-md-3">
-                            <div class="review-box">
-
-                                <span class="icon">👤</span>
-                                <h4>Pali Barman</h4>
-                                <p>I had a fantastic experience at this hotel.<br>Staff was friendly and room was spotless.</p>
-                                <div class="review-tag">Rooms 5/5 | Service 5/5</div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="review-box">
-
-                                <span class="icon">👤</span>
-                                <h4>Subhajit Paul</h4>
-                                <p>The rooftop restaurant vibe was amazing. We spent most time there enjoying the view.</p>
-                                <div class="review-tag">Rooms 5/5 | Service 5/5</div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="review-box">
-
-                                <span class="icon">👤</span>
-                                <h4>Vishal Dhami</h4>
-                                <p>Very clean rooms and polite staff. Comfortable and peaceful stay.</p>
-                                <div class="review-tag">Clean • Luxury • Calm</div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- Slide 2 -->
-                <div class="carousel-item">
-                    <div class="row g-3 justify-content-center">
-
-                        <div class="col-md-3">
-                            <div class="review-box">
-
-                                <span class="icon">👤</span>
-                                <h4>Ankit Roy</h4>
-                                <p>Service was quick and helpful. Room was fresh and well maintained.</p>
-                                <div class="review-tag">Excellent Service</div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="review-box">
-
-                                <span class="icon">👤</span>
-                                <h4>Riya Sharma</h4>
-                                <p>Loved the atmosphere. Very peaceful place to relax.</p>
-                                <div class="review-tag">Comfort • Clean</div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="review-box">
-
-                                <span class="icon">👤</span>
-                                <h4>Arjun Das</h4>
-                                <p>Perfect for family stay. Safe and cozy.</p>
-                                <div class="review-tag">Family Friendly</div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Controls -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </button>
-
-            <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </button>
-
-        </div>
-    </section>
-
+    @await Component.InvokeAsync("HomeReview")
 
     <section class="location-section">
         <div class="overlay">
@@ -407,6 +211,8 @@
             </ul>
         </div>
     </section>
+
+
     <!-- Google Map using given Latitude & Longitude -->
     <section class="map-section">
         <div class="map-layout">
@@ -448,11 +254,6 @@
 
         </div>
     </section>
-
-
-
-
-
 
     <footer class="luxury-footer">
         <div class="footer-container">

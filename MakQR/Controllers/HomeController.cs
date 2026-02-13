@@ -1,9 +1,4 @@
-using MakQR.Models.Admin;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Build.Evaluation;
-using System.Text.Json;
-using System.Text.RegularExpressions;
-using static MakQR.Controllers.HomeController;
 
 namespace MakQR.Controllers
 {

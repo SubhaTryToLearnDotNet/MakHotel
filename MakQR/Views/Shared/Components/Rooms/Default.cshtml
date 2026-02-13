@@ -1,0 +1,14 @@
+﻿@model MakQR.Models.Home.RoomsViewSection
+<section class="view-section">
+    <h2>@Model.Title</h2>
+    <p>@Model.Description</p>
+    <div class="view-grid">
+        @foreach (var item in Model.Items)
+        {
+            <div class="view-card">
+                <img src="~/images/@item.Image" alt="">
+                <h5>@item.Caption</h5>
+            </div>
+        }
+    </div>
+</section>

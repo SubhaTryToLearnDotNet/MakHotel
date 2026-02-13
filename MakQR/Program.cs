@@ -1,8 +1,12 @@
 using MakQR.Models.Config;
+using MakQR.Services;
+using MakQR.Services.Interfaces.Home;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<IReviewsService, JsonReviewsService>();
+builder.Services.AddSingleton<IJsonSectionService, JsonSectionService>();
 
 builder.Services.Configure<Appconfig>(
     builder.Configuration.GetSection("Appconfig"));

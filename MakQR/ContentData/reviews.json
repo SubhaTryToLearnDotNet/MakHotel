@@ -1,0 +1,45 @@
+{
+  "title": "Guest Reviews",
+  "subtitle": "What Our Guests Are Saying",
+  "slideSize": 3,
+  "items": [
+    {
+      "id": "r1",
+      "name": "Pali Barman",
+      "commentHtml": "I had a fantastic experience at this hotel.<br>Staff was friendly and room was spotless.",
+      "tag": "Rooms 5/5 | Service 5/5"
+    },
+    {
+      "id": "r2",
+      "name": "Subhajit Paul",
+      "commentHtml": "The rooftop restaurant vibe was amazing. We spent most time there enjoying the view.",
+      "tag": "Rooms 5/5 | Service 5/5"
+    },
+    {
+      "id": "r3",
+      "name": "Vishal Dhami",
+      "commentHtml": "Very clean rooms and polite staff. Comfortable and peaceful stay.",
+      "tag": "Clean • Luxury • Calm"
+    },
+    {
+      "id": "r4",
+      "name": "Ankit Roy",
+      "commentHtml": "Service was quick and helpful. Room was fresh and well maintained.",
+      "tag": "Excellent Service"
+    },
+    {
+      "id": "r5",
+      "name": "Riya Sharma",
+      "commentHtml": "Loved the atmosphere. Very peaceful place to relax.",
+      "tag": "Comfort • Clean"
+    },
+    {
+      "id": "r6",
+      "name": "Arjun Das",
+      "commentHtml": "Perfect for family stay. Safe and cozy.",
+      "tag": "Family Friendly"
+    }
+  ],
+  "updatedOn": "2026-02-13T13:30:00"
+}
+

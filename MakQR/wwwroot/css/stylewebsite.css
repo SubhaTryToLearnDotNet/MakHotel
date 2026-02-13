@@ -110,7 +110,7 @@ body{
 .about-content h2 {
   font-size: 38px;
   margin-bottom: 24px;
-  color: #2f2f2f;
+   color: #5a4a3a;
   font-family: "Georgia", serif;
 }
 
@@ -179,7 +179,7 @@ body{
 .why-text h2 {
    font-size: 38px;
   margin-bottom: 20px;
-  color: #1e3a5f; /* premium blue */
+  color: #5a4a3a;
   letter-spacing: 0.5px;
 }
 
@@ -268,7 +268,7 @@ font-size: 15px;
   display: flex;
   align-items: center;
   gap: 22px;
-  padding: 26px 10px;
+  padding: 20PX;
   background: rgba(255, 255, 255, 0.65);
   border-radius: 18px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
@@ -292,7 +292,7 @@ font-size: 15px;
   align-items: center;
   justify-content: center;
   background: #fff;
-  
+  padding: 38PX;
 }
 
 
@@ -391,6 +391,7 @@ font-size: 15px;
   font-size: 38px;
   letter-spacing: 2px;
   margin-bottom: 10px;
+   color: #5a4a3a;
 }
 
 .rooms-subtitle {
@@ -432,6 +433,7 @@ font-size: 15px;
 .room-text h3 {
   font-size: 24px;
   margin-bottom: 10px;
+   color: #5a4a3a;
 }
 
 .room-text p {
@@ -456,6 +458,7 @@ font-size: 15px;
 .view-section h2 {
    font-size: 38px;
   margin-bottom: 10px;
+   color: #5a4a3a;
 }
 
 .view-section p {
@@ -520,7 +523,7 @@ font-size: 15px;
 .event-content h2 {
   font-size: 38px;
   margin-bottom: 24px;
-  color: #2f2f2f;
+   color: #5a4a3a;
   font-family: "Georgia", serif;
 }
 
@@ -578,6 +581,7 @@ font-size: 15px;
   text-align: center;
   margin-bottom: 40px;
    font-size: 38px;
+    color: #5a4a3a;
 }
 
 .gallery-grid {
@@ -602,105 +606,32 @@ font-size: 15px;
 .gallery-card:hover img {
   transform: scale(1.08);
 }
-
-
-.hotel-reviews {
-  background: linear-gradient(to bottom, #f6f1e8, #eee7db);
-  padding: 80px 20px;
+.review-section{
+    background: linear-gradient(to bottom, #f6f1e8, #eee7db);
 }
 
-.reviews-container {
-  max-width: 1200px;
-  margin: auto;
+.review-box{
+background:#fff;
+padding:25px;
+border-radius:15px;
+box-shadow:0 8px 25px rgba(0,0,0,.08);
+height:100%;
+transition:.4s;
+ min-height:220px;
 }
 
-.reviews-header {
-  text-align: center;
-  margin-bottom: 50px;
+.review-box:hover{
+transform:translateY(-6px);
 }
 
-.reviews-header h2 {
-  color: #c9a24d;
-   font-size: 38px;
-  margin-bottom: 6px;
+
+
+.review-tag{
+font-size:13px;
+color:#777;
+margin-top:10px;
 }
 
-.reviews-header p {
-  color: #777;
-  font-size: 15px;
-}
-
-.reviews-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-}
-
-.review-card {
-  background: #ffffff;
-  border-radius: 18px;
-  padding: 30px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-  transition: transform 0.3s ease;
-}
-
-.review-card:hover {
-  transform: translateY(-6px);
-}
-
-.stars {
-  color: #c9a24d;
-  margin-bottom: 15px;
-}
-
-.review-user {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 15px;
-}
-
-.icon {
-  font-size: 22px;
-  color: #8b6b4a;
-}
-
-.review-user h4 {
-  font-size: 16px;
-  color: #222;
-}
-
-.review-user small {
-  font-size: 13px;
-  color: #777;
-}
-
-.review-text {
-  font-size: 14.5px;
-  color: #555;
-  line-height: 1.7;
-  margin-bottom: 20px;
-}
-
-.review-tag {
-  background: #1f2937;
-  color: #fff;
-  font-size: 13px;
-  padding: 10px 14px;
-  border-radius: 10px;
-  text-align: center;
-}
-
-/* 📱 Responsive */
-@media (max-width: 900px) {
-  .reviews-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .reviews-header h2 {
-    font-size: 30px;
-  }
-}
 
 
 /* Location Section */
@@ -885,21 +816,35 @@ font-size: 15px;
   
 }
 
-.footer-image{
-    width:140px;
-    height:140px;
-    
+/* WRAP logo + text together */
+.logo-wrap1 {
+    display: inline-block;
+    padding-left: 5px; /* SAME as image earlier */
 }
 
-.footer-image img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
+    /* Logo image */
+    .logo-wrap1 img {
+        height: 150px;
+        display: block;
+         transition: transform 0.4s ease;
+    }
+.logo-wrap1:hover {
+  transform: scale(1.1) rotate(3deg);
 }
-.footer-image p{
-  font-size: 13px;
- 
+
+
+/* Text below logo */
+.logo-text1 {
+    display: block;
+    margin-top: -20px;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: #d4af37; /* GOLD */
+    font-family: "Georgia", serif;
+    padding-left: 15px;
 }
+
 
 .footer-box p {
   margin: 6px 0;

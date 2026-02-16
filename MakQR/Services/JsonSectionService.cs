@@ -1,6 +1,8 @@
-﻿using MakQR.Models.Home;
+﻿using MakQR.Models.Common;
+using MakQR.Models.Home;
 using MakQR.Services.Interfaces.Home;
 using Microsoft.Extensions.Caching.Memory;
+using System.IO;
 using System.Text.Json;
 
 namespace MakQR.Services
@@ -33,18 +35,12 @@ namespace MakQR.Services
 
         public async ValueTask<EventSection> GetHomeEventSection()
         {
-            var cacheKey = $"HOME_EVENT_CACHE";
-            if (_cache.TryGetValue(cacheKey, out EventSection? cached))
+            if (_cache.TryGetValue(CacheKeys.HomeEventSection, out EventSection? cached))
                 return cached ?? new();
-
-            FileName = $"events.json";
-            if (!File.Exists(GetFilePath(FileName)))
-                return new EventSection();
-
-            var json = await File.ReadAllTextAsync(FilePath);
+            var json = await File.ReadAllTextAsync(JsonFilePath.HomeEventSectionPath(_env));
             var data = JsonSerializer.Deserialize<EventSection>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
-            _cache.Set(cacheKey, data);
+            _cache.Set(CacheKeys.HomeEventSection, data);
             return data ?? new EventSection();
         }
 
@@ -98,9 +94,6 @@ namespace MakQR.Services
             _cache.Set(cacheKey, data);
             return data ?? new RoomsSection();
         }
-
-
-
 
         private string GetFilePath(string fileName, bool ensureDirectory = false)
         {

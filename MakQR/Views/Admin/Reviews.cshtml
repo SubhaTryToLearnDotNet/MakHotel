@@ -1,0 +1,107 @@
+﻿@using MakQR.Models.Home
+@model ReviewsSection
+<div class="admin-page">
+    <h2 class="mb-4">Guest Reviews (Admin)</h2>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Reviewer</th>
+                <th>Comment</th>
+                <th>Tag</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Items.Count; i++)
+            {
+                var review = Model.Items[i];
+                <tr>
+                    <td>@(i + 1)</td>
+                    <td>@review.Name</td>
+                    <td>
+                        @Html.Raw(review.CommentHtml)
+                    </td>
+                    <td>@review.Tag</td>
+                    <td>
+                        <a class="btn btn-sm btn-primary"
+                           asp-action="EditReview"
+                           asp-route-id="@review.Id">
+                            Edit
+                        </a>
+
+                        <button class="btn btn-sm btn-danger"
+                                onclick="deleteReview('@review.Id')">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-action="AddReview" class="btn btn-success">
+        ➕ Add New Review
+    </a>
+
+</div>
+<script>
+    async function deleteReview(id) {
+
+        const result = await Swal.fire({
+            title: 'Are you sure?',
+            text: 'This review will be permanently deleted!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Yes, delete it'
+        });
+
+        if (!result.isConfirmed) return;
+
+        Swal.fire({
+            title: 'Deleting...',
+            text: 'Please wait',
+            allowOutsideClick: false,
+            didOpen: () => Swal.showLoading()
+        });
+
+        try {
+            const response = await fetch(`/Admin/DeleteReview?id=${id}`, {
+                method: 'POST'
+            });
+
+            if (!response.ok) {
+                throw new Error("Delete failed");
+            }
+
+            const data = await response.json();
+
+            if (data.success) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Deleted!',
+                    text: data.message
+                }).then(() => {
+                    location.reload();
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Failed',
+                    text: data.message
+                });
+            }
+
+        } catch (err) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Something went wrong while deleting'
+            });
+            console.error(err);
+        }
+    }
+</script>
+
+

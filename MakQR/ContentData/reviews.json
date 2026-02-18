@@ -1,45 +1,44 @@
 {
-  "title": "Guest Reviews",
-  "subtitle": "What Our Guests Are Saying",
-  "slideSize": 3,
-  "items": [
+  "Title": "Guest Reviews",
+  "Subtitle": "What Our Guests Are Saying",
+  "SlideSize": 3,
+  "Items": [
     {
-      "id": "r1",
-      "name": "Pali Barman",
-      "commentHtml": "I had a fantastic experience at this hotel.<br>Staff was friendly and room was spotless.",
-      "tag": "Rooms 5/5 | Service 5/5"
+      "Id": "7b6ee20831eb49ee86bc001c8dff9f6b",
+      "Name": "Ankit Roy",
+      "CommentHtml": "Service was quick and helpful. Room was fresh and well maintained.",
+      "Tag": "Excellent Service"
     },
     {
-      "id": "r2",
-      "name": "Subhajit Paul",
-      "commentHtml": "The rooftop restaurant vibe was amazing. We spent most time there enjoying the view.",
-      "tag": "Rooms 5/5 | Service 5/5"
+      "Id": "3cfb9925475f47658f312cafa0d6c9ad",
+      "Name": "Pali Barman",
+      "CommentHtml": "I had a fantastic experience at this hotel.\r\nStaff was friendly and room was spotless.",
+      "Tag": "Rooms 5/5 | Service 5/5"
     },
     {
-      "id": "r3",
-      "name": "Vishal Dhami",
-      "commentHtml": "Very clean rooms and polite staff. Comfortable and peaceful stay.",
-      "tag": "Clean • Luxury • Calm"
+      "Id": "0e640f008dba4735b547c63698b04f6a",
+      "Name": "Subhajit Paul",
+      "CommentHtml": "The rooftop restaurant vibe was amazing. We spent most time there enjoying the view.",
+      "Tag": "Rooms 5/5 | Service 5/5"
     },
     {
-      "id": "r4",
-      "name": "Ankit Roy",
-      "commentHtml": "Service was quick and helpful. Room was fresh and well maintained.",
-      "tag": "Excellent Service"
+      "Id": "c05e81681a5e497a818036e6d00385ef",
+      "Name": "Vishal Dhami",
+      "CommentHtml": "Very clean rooms and polite staff. Comfortable and peaceful stay.",
+      "Tag": "Clean \u2022 Luxury \u2022 Calm"
     },
     {
-      "id": "r5",
-      "name": "Riya Sharma",
-      "commentHtml": "Loved the atmosphere. Very peaceful place to relax.",
-      "tag": "Comfort • Clean"
+      "Id": "4fb3484338a442ec81f0f725a1d5a97c",
+      "Name": "Riya Sharma",
+      "CommentHtml": "Loved the atmosphere. Very peaceful place to relax.",
+      "Tag": "Comfort \u2022 Clean"
     },
     {
-      "id": "r6",
-      "name": "Arjun Das",
-      "commentHtml": "Perfect for family stay. Safe and cozy.",
-      "tag": "Family Friendly"
+      "Id": "3cabb6d6395b4d7c830fa5ee55b245e9",
+      "Name": "Arjun Das",
+      "CommentHtml": "Perfect for family stay. Safe and cozy.",
+      "Tag": "Family Friendly"
     }
   ],
-  "updatedOn": "2026-02-13T13:30:00"
+  "UpdatedOn": "2026-02-19T01:21:58.7273676+05:30"
 }
-

@@ -1,11 +1,11 @@
-﻿@using MakQR.Models.Dto
-@model HomeEventSectionRequestDto
+﻿@using MakQR.Models.Dtos
+@model HomeWhyUsSectionRequestDto
 <div class="admin-page">
     <div class="hotel-form-card">
 
-        <h3 class="form-title">Hotel Event Section</h3>
+        <h3 class="form-title">Hotel Why Us Section</h3>
 
-        <form id="EventForm"
+        <form id="WhyUsForm"
               method="post"
               enctype="multipart/form-data"
               class="hotel-form">
@@ -27,12 +27,12 @@
 
                 <div class="row g-3">
                     <div class="col-md-4">
-                        <input asp-for="EventImg" type="file" class="form-control file-input" />
+                        <input asp-for="Image" type="file" class="form-control file-input" />
                     </div>
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-success save-btn">
+            <button type="submit" class="btn btn-primary save-btn">
                 Save Section
             </button>
 
@@ -41,10 +41,10 @@
 </div>
 
 <script>
-    document.getElementById("EventForm").addEventListener("submit", async function (e) {
+    document.getElementById("WhyUsForm").addEventListener("submit", async function (e) {
         e.preventDefault();
 
-        const form = document.getElementById("EventForm");
+        const form = document.getElementById("WhyUsForm");
         const submitBtn = form.querySelector("button[type='submit']");
         const formData = new FormData(form);
 
@@ -58,7 +58,7 @@
         });
 
         try {
-            const response = await fetch('/Admin/AddEventSection', {
+            const response = await fetch('/Admin/AddWhyUsSection', {
                 method: 'POST',
                 body: formData
             });
@@ -99,5 +99,7 @@
         }
     });
 </script>
+
+
 
 

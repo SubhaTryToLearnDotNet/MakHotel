@@ -1,64 +1,55 @@
-﻿@using MakQR.Models.Dto
-@model HomeEventSectionRequestDto
+﻿@using MakQR.Models.Dtos
+@model ReviewRequestDto
 <div class="admin-page">
     <div class="hotel-form-card">
+        <h2 class="form-title">Add New Review</h2>
 
-        <h3 class="form-title">Hotel Event Section</h3>
+        <form id="ReviewForm"
+              method="post">
 
-        <form id="EventForm"
-              method="post"
-              enctype="multipart/form-data"
-              class="hotel-form">
-
-            <div class="form-group">
-                <label>Section Title (H1)</label>
-                <input asp-for="Title" class="form-control" />
+            <div class="mb-3">
+                <label class="form-label">Reviewer Name</label>
+                <input asp-for="Name" class="form-control" required />
             </div>
 
-            <div class="form-group">
-                <label>Description</label>
-                <textarea asp-for="DescriptionHtml"
+            <div class="mb-3">
+                <label class="form-label">Comment (HTML allowed)</label>
+                <textarea asp-for="CommentHtml"
                           class="form-control"
-                          rows="4"></textarea>
+                          rows="4"
+                          required></textarea>
             </div>
 
-            <div class="form-group">
-                <label class="mb-2 d-block">Upload Images</label>
-
-                <div class="row g-3">
-                    <div class="col-md-4">
-                        <input asp-for="EventImg" type="file" class="form-control file-input" />
-                    </div>
-                </div>
+            <div class="mb-3">
+                <label class="form-label">Tag</label>
+                <input asp-for="Tag" class="form-control" />
             </div>
 
-            <button type="submit" class="btn btn-success save-btn">
-                Save Section
-            </button>
+            <button type="submit" class="btn btn-success">Save Review</button>
+            <a asp-action="Reviews" class="btn btn-secondary">Cancel</a>
 
         </form>
     </div>
 </div>
-
 <script>
-    document.getElementById("EventForm").addEventListener("submit", async function (e) {
+    document.getElementById("ReviewForm").addEventListener("submit", async function (e) {
         e.preventDefault();
 
-        const form = document.getElementById("EventForm");
+        const form = document.getElementById("ReviewForm");
         const submitBtn = form.querySelector("button[type='submit']");
         const formData = new FormData(form);
 
         submitBtn.disabled = true;
 
         Swal.fire({
-            title: 'Saving...',
+            title: 'Saving Review...',
             text: 'Please wait',
             allowOutsideClick: false,
             didOpen: () => Swal.showLoading()
         });
 
         try {
-            const response = await fetch('/Admin/AddEventSection', {
+            const response = await fetch('/Admin/AddReview', {
                 method: 'POST',
                 body: formData
             });
@@ -77,7 +68,8 @@
                     confirmButtonText: 'OK'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        window.location.href = '/Home';
+
+                        window.location.href = '/Admin/Reviews';
                     }
                 });
             } else {
@@ -91,7 +83,7 @@
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'Something went wrong while saving'
+                text: 'Something went wrong while saving the review'
             });
             console.error(err);
         } finally {
@@ -99,5 +91,6 @@
         }
     });
 </script>
+
 
 

@@ -1,5 +1,56 @@
 ﻿@model MakQR.Models.Home.ReviewsSection
- <section class="py-5 text-center review-section">
+@{
+
+    var slides = Model.Items
+        .Select((item, index) => new { item, index })
+        .GroupBy(x => x.index / Model.SlideSize)
+        .ToList();
+
+}
+
+<section class="py-5 text-center review-section">
+
+    <h2 class="fw-bold">🏨 @Model.Title</h2>
+    <p class="text-muted mb-4">@Model.Subtitle</p>
+
+    <div id="reviewCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
+        <div class="carousel-inner">
+
+            @for (int i = 0; i < slides.Count; i++)
+            {
+                <div class="carousel-item @(i == 0 ? "active" : "")">
+                    <div class="row g-3 justify-content-center">
+
+                        @foreach (var review in slides[i])
+                        {
+                            <div class="col-md-3">
+                                <div class="review-box">
+                                    <span class="icon">👤</span>
+                                    <h4>@review.item.Name</h4>
+                                    <p>@Html.Raw(review.item.CommentHtml)</p>
+                                    <div class="review-tag">@review.item.Tag</div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            }
+
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+
+    </div>
+</section>
+
+@* <section class="py-5 text-center review-section">
 
     <h2 class="fw-bold">🏨 @Model.Title</h2>
     <p class="text-muted mb-4">@Model.Subtitle</p>
@@ -94,34 +145,4 @@
         </button>
 
     </div>
-</section> 
-@* <section class="review-section">
-
-    <h2>@Model.Title</h2>
-    <p>@Model.Subtitle</p>
-
-    <div class="carousel-inner">
-        @{
-            var slides = Model.Items
-            .Select((item, index) => new { item, index })
-            .GroupBy(x => x.index / Model.SlideSize);
-        }
-
-        @foreach (var slide in slides)
-        {
-            <div class="carousel-item @(slide.Key == 0 ? "active" : "")">
-                <div class="row">
-                    @foreach (var r in slide)
-                    {
-                        <div class="col-md-3">
-                            <h4>@r.item.Name</h4>
-                            <p>@Html.Raw(r.item.CommentHtml)</p>
-                            <span>@r.item.Tag</span>
-                        </div>
-                    }
-                </div>
-            </div>
-        }
-    </div>
-
 </section> *@

@@ -1,16 +1,15 @@
 {
-  "title": "The View",
-  "description": "Enjoy refreshing green surroundings and a peaceful atmosphere that offers a welcome escape from the city’s pace.<br>From the comfort of your room or balcony, take in soothing views that create a sense of calm and relaxation, making every stay pleasant and memorable.",
-  "items": [
+  "Title": "The View",
+  "Description": "Enjoy refreshing green surroundings and a peaceful atmosphere that offers a welcome escape from the city\u2019s pace. From the comfort of your room or balcony, take in soothing views that create a sense of calm and relaxation, making every stay pleasant and memorable.",
+  "Items": [
     {
-      "image": "the view (2).png",
-      "caption": "The View from Balcony"
+      "Image": "room_views1.png",
+      "Caption": " The View from Balcony"
     },
     {
-      "image": "2a21a367-124d-480c-93cb-4826bbcc54d0.png",
-      "caption": "The View from Room"
+      "Image": "room_views2.png",
+      "Caption": "The View from Room"
     }
   ],
-  "updatedOn": "2026-02-13T14:30:00"
+  "UpdatedOn": "2026-02-19T01:13:43.9453661+05:30"
 }
-

@@ -1,28 +1,32 @@
-﻿
+﻿@using MakQR.Models.Home
+@model RoomsSection
+
+
 <section class="rooms">
-    <h2 class="rooms-title">ROOMS</h2>
+    <h2 class="rooms-title">@Model.Title</h2>
     <p class="rooms-subtitle">
-        Well designed and Spacious rooms
+        @Model.Subtitle
     </p>
 
     <div class="rooms-grid">
-        <div class="room-img"><img src="./images/Room Image 1 .png" alt=""></div>
-        <div class="room-img"><img src="./images/eee0d15d-fb4c-46c6-88a1-c51599b1d662.png" alt=""></div>
-        <div class="room-img"><img src="./images/room3.png" alt=""></div>
+        <div class="room-img"><img src="./images/room_type_1.png" alt=""></div>
+        <div class="room-img"><img src="./images/room_type_2.png" alt=""></div>
+        <div class="room-img"><img src="./images/room_type_3.png" alt=""></div>
 
-        <div class="room-img"><img src="./images/H5.jpg" alt=""></div>
+        <div class="room-img"><img src="./images/room_type_4.png" alt=""></div>
 
 
 
         <div class="room-text">
-            <h3>Contemporary Comfort</h3>
+            <h3>@Model.GridHeading</h3>
             <p>
-                be inspired to rest....
+                @Model.Description
             </p>
         </div>
 
-        <div class="room-img"><img src="./images/2a21a367-124d-480c-93cb-4826bbcc54d0.png" alt=""></div>
+        <div class="room-img"><img src="./images/room_type_5.png" alt=""></div>
     </div>
 
 
 </section>
+

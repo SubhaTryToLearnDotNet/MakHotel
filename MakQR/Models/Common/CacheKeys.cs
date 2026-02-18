@@ -9,5 +9,6 @@
         public const string RoomsTypesSection = "ROOMS_CACHE";
         public const string Facility = "FACILITY_GALLERY_CACHE";
         public const string Reviews = "REVIEWS_CACHE";
+        public const string HomeBanner = "HOMEBANNER_CACHE";
     }
 }

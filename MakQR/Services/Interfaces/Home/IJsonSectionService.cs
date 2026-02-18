@@ -10,6 +10,7 @@ namespace MakQR.Services.Interfaces.Home
         ValueTask<WhyUsSection> GetHomeWhyUsSection();
         ValueTask<RoomsViewSection> GetRoomsView();
         ValueTask<RoomsSection> GetRoomsSection();
+        ValueTask<BannerSection> GetBannerSection();
         #endregion
     }
 }

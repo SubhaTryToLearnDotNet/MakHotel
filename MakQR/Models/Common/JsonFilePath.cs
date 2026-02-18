@@ -19,5 +19,7 @@
 
         public static string ReviewFilePath(IWebHostEnvironment env) =>
            Path.Combine(env.ContentRootPath, ContentData, "reviews.json");
+        public static string BannerFilePath(IWebHostEnvironment env) =>
+          Path.Combine(env.ContentRootPath, ContentData, "banner.json");
     }
 }

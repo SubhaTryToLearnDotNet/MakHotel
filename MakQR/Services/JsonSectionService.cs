@@ -65,5 +65,14 @@ namespace MakQR.Services
             return data ?? new RoomsSection();
         }
 
+        public async ValueTask<BannerSection> GetBannerSection()
+        {
+            if (_cache.TryGetValue(CacheKeys.HomeBanner, out BannerSection? cached))
+                return cached ?? new();
+            var json = await File.ReadAllTextAsync(JsonFilePath.BannerFilePath(_env));
+            var data = JsonSerializer.Deserialize<BannerSection>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            _cache.Set(CacheKeys.RoomsTypesSection, data);
+            return data ?? new BannerSection();
+        }
     }
 }

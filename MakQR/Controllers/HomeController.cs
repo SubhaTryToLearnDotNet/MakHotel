@@ -1,16 +1,27 @@
+using MakQR.Models.Common;
+using MakQR.Models.Home;
+using MakQR.Services.Interfaces.Home;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
+using System.Text.Json;
 
 namespace MakQR.Controllers
 {
-    public class HomeController() : Controller
+    public class HomeController(IJsonSectionService iJsonSectionService) : Controller
     {
+        private readonly IJsonSectionService _iJsonSectionService = iJsonSectionService;
+
         // ?? Static MAK HOTEL location (set once)
-        private const double HotelLat = 12.955369955637972 ;   // update if needed
+        private const double HotelLat = 12.955369955637972;   // update if needed
         private const double HotelLon = 77.64351675545757;
-        public IActionResult index()
+        public async Task<IActionResult> index()
         {
-            return View();
+            var data = await _iJsonSectionService.GetBannerSection();
+            return View(data);
         }
+
+
+
 
         [HttpPost]
         public async Task<IActionResult> GetDistanceAjax(string userLocation)

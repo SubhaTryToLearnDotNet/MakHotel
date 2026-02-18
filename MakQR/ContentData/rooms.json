@@ -1,32 +1,7 @@
 {
-  "title": "ROOMS",
-  "subtitle": "Well designed and Spacious rooms",
-  "grid": [
-    {
-      "type": "image",
-      "image": "Room Image 1 .png"
-    },
-    {
-      "type": "image",
-      "image": "eee0d15d-fb4c-46c6-88a1-c51599b1d662.png"
-    },
-    {
-      "type": "image",
-      "image": "room3.png"
-    },
-    {
-      "type": "image",
-      "image": "H5.jpg"
-    },
-    {
-      "type": "text",
-      "heading": "Contemporary Comfort",
-      "description": "be inspired to rest...."
-    },
-    {
-      "type": "image",
-      "image": "2a21a367-124d-480c-93cb-4826bbcc54d0.png"
-    }
-  ],
-  "updatedOn": "2026-02-13T15:00:00"
+  "Title": "ROOMS",
+  "Subtitle": "Well designed and Spacious rooms",
+  "GridHeading": "Contemporary Comfort",
+  "Description": "be inspired to rest....",
+  "UpdatedOn": "2026-02-19T02:43:53.4459329+05:30"
 }

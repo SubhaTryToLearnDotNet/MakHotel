@@ -11,11 +11,52 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <section>
-        <div>
-            @RenderBody()
+
+    @if (!(ViewData["HideMenu"] as bool? ?? false))
+    {
+        <!-- Admin Layout With Sidebar -->
+        <div class="d-flex">
+
+            <!-- Sidebar -->
+            <div class="bg-dark text-white p-3" style="width:250px; min-height:100vh;">
+                <h5 class="text-center mb-4">MAK Admin</h5>
+
+                <ul class="nav flex-column">
+
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white" asp-controller="Slider" asp-action="Index">
+                            <i class="fa fa-images me-2"></i> Slider Update
+                        </a>
+                    </li>
+
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white" asp-controller="Event" asp-action="Index">
+                            <i class="fa fa-calendar me-2"></i> Event Update
+                        </a>
+                    </li>
+
+                    <!-- Add remaining 15 menus here -->
+
+                </ul>
+            </div>
+
+            <!-- Content -->
+            <div class="flex-grow-1 p-4">
+                @RenderBody()
+            </div>
+
         </div>
-    </section>
+    }
+    else
+    {
+        <!-- EXACT SAME STRUCTURE AS BEFORE -->
+        <section>
+            <div>
+                @RenderBody()
+            </div>
+        </section>
+    }
+
     <footer class="email-footer">
         <p>
             

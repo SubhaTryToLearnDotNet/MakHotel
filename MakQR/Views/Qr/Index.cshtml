@@ -1,6 +1,7 @@
 ﻿@using MakQR.Models.Admin
 @model HotelSectionData
 @{
+    ViewData["HideMenu"] = true;
     string title = string.IsNullOrWhiteSpace(Model.Title) ? "Our Hotel" : Model.Title;
     string description = string.IsNullOrWhiteSpace(Model.Description) ? "Discover a place where comfort meets style. We welcome you to experience our hotel through the spaces and services we proudly offer." : Model.Description;
 }

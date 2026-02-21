@@ -1,6 +1,6 @@
-﻿using MakQR.Models.Common;
-using MakQR.Models.Home;
+﻿using MakQR.Models.Home;
 using MakQR.Services.Interfaces.Home;
+using MakQR.Utils;
 using Microsoft.Extensions.Caching.Memory;
 using System.Text.Json;
 

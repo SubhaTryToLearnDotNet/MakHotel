@@ -1,0 +1,46 @@
+{
+  "Title": "Amenities",
+  "SubTitle": "Impeccable service",
+  "Amenities": [
+    {
+      "Icon": "\uD83D\uDEAA",
+      "Title": "Multiple entry and exit gates"
+    },
+    {
+      "Icon": "\uD83D\uDCA7",
+      "Title": "RO-purified drinking water"
+    },
+    {
+      "Icon": "\u2668\uFE0F",
+      "Title": "24-hours hot water"
+    },
+    {
+      "Icon": "\uD83C\uDF7D\uFE0F",
+      "Title": "Rooftop Restaurant"
+    },
+    {
+      "Icon": "\uD83D\uDE97\uD83D\uDD12",
+      "Title": "Secured Car Parking"
+    },
+    {
+      "Icon": "\uD83D\uDE95\u2194\uFE0F",
+      "Title": "Airport and railway station pick up and drop (24hours)"
+    },
+    {
+      "Icon": "\uD83D\uDCF9\uD83D\uDD52",
+      "Title": "24\u00D77 CCTV Surveillance"
+    },
+    {
+      "Icon": "\uD83E\uDDF3\uD83C\uDF0D",
+      "Title": "Tours \u0026 Travels"
+    },
+    {
+      "Icon": "\uD83D\uDCF6",
+      "Title": "Free Wi-Fi"
+    },
+    {
+      "Icon": "\uD83D\uDD52 ",
+      "Title": "4-Hours Front Desk"
+    }
+  ]
+}

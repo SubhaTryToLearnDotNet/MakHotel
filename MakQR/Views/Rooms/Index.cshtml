@@ -1,0 +1,140 @@
+﻿@using MakQR.Models.Dtos
+@model RoomsTypeRequestDto
+
+<div class="admin-page">
+    <div class="hotel-form-card">
+
+        <h3 class="form-title">Hotel Rooms Views</h3>
+
+        <form id="RoomsForm" method="post"
+              enctype="multipart/form-data"
+              class="hotel-form">
+
+            <!-- Section Title -->
+            <div class="form-group">
+                <label>Section Title (H1)</label>
+                <input asp-for="Title" class="form-control" />
+            </div>
+
+            <!-- Subtitle -->
+            <div class="form-group">
+                <label>Subtitle</label>
+                <textarea asp-for="Subtitle"
+                          class="form-control"
+                          rows="3"></textarea>
+            </div>
+
+            <hr />
+
+            <!-- GRID ITEMS -->
+            <!-- IMAGE 1 -->
+            <div class="form-group">
+                <h5>Grid Item 1 (Image)</h5>
+                <input asp-for="ImageFile1" type="file" class="form-control file-input mb-2" />
+            </div>
+
+            <!-- IMAGE 2 -->
+            <div class="form-group">
+                <h5>Grid Item 2 (Image)</h5>
+                <input asp-for="ImageFile2" type="file" class="form-control file-input mb-2" />
+            </div>
+
+            <!-- IMAGE 3 -->
+            <div class="form-group">
+                <h5>Grid Item 3 (Image)</h5>
+                <input asp-for="ImageFile3" type="file" class="form-control file-input mb-2" />
+            </div>
+
+            <!-- IMAGE 4 -->
+            <div class="form-group">
+                <input asp-for="ImageFile4" type="file" class="form-control file-input mb-2" />
+            </div>
+
+            <!-- TEXT GRID -->
+            <div class="form-group mt-4">
+                <h5>Grid Item 5 (Text)</h5>
+                <label>Heading</label>
+                <input asp-for="GridHeading" type="text" class="form-control file-input mb-2" />
+
+                <label class="mt-2">Description</label>
+                <textarea asp-for="Description"
+                          class="form-control"
+                          rows="3"></textarea>
+            </div>
+
+            <!-- IMAGE 5 -->
+            <div class="form-group mt-3">
+                <h5>Grid Item 6 (Image)</h5>
+
+                <input asp-for="ImageFile5" type="file" class="form-control file-input mb-2" />
+            </div>
+
+            <button type="submit"
+                    class="btn btn-success mt-4">
+                Save Section
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+<script>
+    document.getElementById("RoomsForm").addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const form = document.getElementById("RoomsForm");
+        const submitBtn = form.querySelector("button[type='submit']");
+        const formData = new FormData(form);
+
+        submitBtn.disabled = true;
+
+        Swal.fire({
+            title: 'Saving...',
+            text: 'Please wait',
+            allowOutsideClick: false,
+            didOpen: () => Swal.showLoading()
+        });
+
+        try {
+            const response = await fetch('/Rooms/AddRoomTypeSection', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (!response.ok) {
+                throw new Error("Request failed");
+            }
+
+            const data = await response.json();
+
+            if (data.success) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Saved!',
+                    text: data.message,
+                    confirmButtonText: 'OK'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Failed',
+                    text: data.message
+                });
+            }
+        } catch (err) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Something went wrong while saving'
+            });
+            console.error(err);
+        } finally {
+            submitBtn.disabled = false;
+        }
+    });
+</script>

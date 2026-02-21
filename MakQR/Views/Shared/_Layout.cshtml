@@ -9,9 +9,14 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    @* <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.css"> *@
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.0/build/css/intlTelInput.css" />
 </head>
 <body>
-
+    @{
+        var currentController = ViewContext.RouteData.Values["Controller"]?.ToString();
+    }
     @if (!(ViewData["HideMenu"] as bool? ?? false))
     {
         <!-- Admin Layout With Sidebar -->
@@ -24,21 +29,77 @@
                 <ul class="nav flex-column">
 
                     <li class="nav-item mb-2">
-                        <a class="nav-link text-white" asp-controller="Slider" asp-action="Index">
-                            <i class="fa fa-images me-2"></i> Slider Update
+                        <a class="nav-link text-white @(currentController == "Admin" ? "active bg-primary" : "")"
+                           asp-controller="Admin" asp-action="AddHotelOverview">
+                            <i class="fas fa-qrcode me-2"></i> QR Update
                         </a>
                     </li>
 
                     <li class="nav-item mb-2">
-                        <a class="nav-link text-white" asp-controller="Event" asp-action="Index">
-                            <i class="fa fa-calendar me-2"></i> Event Update
+                        <a class="nav-link text-white @(currentController == "Slider" ? "active bg-primary" : "")"
+                           asp-controller="Slider" asp-action="Index">
+                            <i class="fas fa-sliders-h me-2"></i> Slider Update
                         </a>
                     </li>
 
-                    <!-- Add remaining 15 menus here -->
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white @(currentController == "Event" ? "active bg-primary" : "")"
+                           asp-controller="Event" asp-action="Index">
+                            <i class="fas fa-calendar-check me-2"></i> Event Update
+                        </a>
+                    </li>
 
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white @(currentController == "WhyMak" ? "active bg-primary" : "")"
+                           asp-controller="WhyMak" asp-action="Index">
+                            <i class="fas fa-lightbulb me-2"></i> Why Mak
+                        </a>
+                    </li>
+
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white @(currentController == "Rooms" ? "active bg-primary" : "")"
+                           asp-controller="Rooms" asp-action="Index">
+                            <i class="fas fa-bed me-2"></i> Rooms Update
+                        </a>
+                    </li>
+
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white @(currentController == "AboutUs" ? "active bg-primary" : "")"
+                           asp-controller="AboutUs" asp-action="Index">
+                            <i class="fas fa-info-circle me-2"></i> About Mak
+                        </a>
+                    </li>
+
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white @(currentController == "RoomViews" ? "active bg-primary" : "")"
+                           asp-controller="RoomViews" asp-action="Index">
+                            <i class="fas fa-eye me-2"></i> Views Update
+                        </a>
+                    </li>
+
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white @(currentController == "Facility" ? "active bg-primary" : "")"
+                           asp-controller="Facility" asp-action="Index">
+                            <i class="fas fa-hotel me-2"></i> Facility Update
+                        </a>
+                    </li>
+
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white @(currentController == "Reviews" ? "active bg-primary" : "")"
+                           asp-controller="Reviews" asp-action="Index">
+                            <i class="fas fa-star me-2"></i> Reviews
+                        </a>
+                    </li>
+
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white @(currentController == "Footer" ? "active bg-primary" : "")"
+                           asp-controller="Footer" asp-action="Index">
+                            <i class="fas fa-window-maximize me-2"></i> Footer
+                        </a>
+                    </li>
                 </ul>
             </div>
+
 
             <!-- Content -->
             <div class="flex-grow-1 p-4">
@@ -49,7 +110,7 @@
     }
     else
     {
-        <!-- EXACT SAME STRUCTURE AS BEFORE -->
+
         <section>
             <div>
                 @RenderBody()
@@ -59,7 +120,7 @@
 
     <footer class="email-footer">
         <p>
-            
+
             <a href="https://makhotelbangalore.com/">https://makhotelbangalore.com/</a>
         </p>
     </footer>

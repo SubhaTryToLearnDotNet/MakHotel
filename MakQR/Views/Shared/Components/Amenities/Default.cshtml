@@ -1,0 +1,26 @@
+﻿@using MakQR.Models.Home
+@model AmenitiesModel
+
+<section class="amenities-section">
+    <h2 class="amenities-title">@Model.Title</h2>
+    <p>@Model.SubTitle</p>
+
+    <div class="amenities-grid">
+        @if (Model.Amenities != null && Model.Amenities.Any())
+        {
+            foreach (var item in Model.Amenities)
+            {
+                <div class="amenity-card">
+                    <div class="icon-wrap">
+                        <span class="icon">@item.Icon</span>
+                    </div>
+                    <h3>@Html.Raw(item.Title)</h3>
+                </div>
+            }
+        }
+        else
+        {
+            <p>No amenities available.</p>
+        }
+    </div>
+</section>

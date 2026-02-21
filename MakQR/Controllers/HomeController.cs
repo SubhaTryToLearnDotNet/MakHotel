@@ -1,9 +1,5 @@
-using MakQR.Models.Common;
-using MakQR.Models.Home;
 using MakQR.Services.Interfaces.Home;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Memory;
-using System.Text.Json;
 
 namespace MakQR.Controllers
 {

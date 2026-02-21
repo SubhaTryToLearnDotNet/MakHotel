@@ -1,4 +1,4 @@
-﻿namespace MakQR.Models.Common
+﻿namespace MakQR.Utils
 {
     public static class RoleNames
     {

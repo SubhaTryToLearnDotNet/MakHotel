@@ -1,4 +1,4 @@
-﻿namespace MakQR.Models.Common
+﻿namespace MakQR.Utils
 {
     public static class JsonFilePath
     {
@@ -21,5 +21,11 @@
            Path.Combine(env.ContentRootPath, ContentData, "reviews.json");
         public static string BannerFilePath(IWebHostEnvironment env) =>
           Path.Combine(env.ContentRootPath, ContentData, "banner.json");
+
+        public static string FooterFilePath(IWebHostEnvironment env) =>
+         Path.Combine(env.ContentRootPath, ContentData, "footer.json");
+
+        public static string AmenitiesFilePath(IWebHostEnvironment env) =>
+         Path.Combine(env.ContentRootPath, ContentData, "amenities.json");
     }
 }

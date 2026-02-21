@@ -1,0 +1,239 @@
+﻿@using MakQR.Models.Home
+@model FooterSection
+<div class="admin-page">
+
+    <div class="hotel-form-card">
+
+        <h3 class="form-title">Update Footer</h3>
+
+        <form id="FooterForm"
+              method="post"
+              class="hotel-form">
+
+            <!-- Address -->
+
+            <div class="mb-3">
+
+                <label>Address</label>
+
+                <textarea asp-for="Address"
+                          class="form-control"
+                          rows="3">
+                </textarea>
+
+            </div>
+
+            <div class="mb-3">
+                <label>Phone 1</label>
+
+                <input asp-for="Phone1"
+                       class="form-control w-100">
+            </div>
+
+
+            <div class="mb-3">
+                <label>Phone 2</label>
+
+                <input asp-for="Phone2"
+                       class="form-control w-100">
+            </div>
+
+
+            <div class="mb-3">
+                <label>Phone 3</label>
+
+                <input asp-for="Phone3"
+                       class="form-control w-100">
+            </div>
+
+            <!-- Email -->
+
+            <div class="mb-3">
+
+                <label>Email</label>
+
+                <input asp-for="Email"
+                       class="form-control">
+
+            </div>
+
+
+            <!-- Facebook -->
+
+            <div class="mb-3">
+
+                <label>Facebook URL</label>
+
+                <input asp-for="Facebook"
+                       class="form-control">
+
+            </div>
+
+
+            <!-- Instagram -->
+
+            <div class="mb-3">
+
+                <label>Instagram URL</label>
+
+                <input asp-for="Instagram"
+                       class="form-control">
+
+            </div>
+
+
+            <!-- Linkedin -->
+
+            <div class="mb-3">
+
+                <label>Linkedin URL</label>
+
+                <input asp-for="Linkedin"
+                       class="form-control">
+
+            </div>
+
+
+            <!-- Tagline -->
+
+            <div class="mb-3">
+
+                <label>Tagline</label>
+
+                <input asp-for="TagLine"
+                       class="form-control">
+
+            </div>
+
+
+            <button type="submit"
+                    class="btn btn-success">
+
+                Save Footer
+
+            </button>
+
+
+        </form>
+
+    </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.0/build/js/intlTelInput.min.js"></script>
+
+<script>
+
+    let phoneInput1;
+    let phoneInput2;
+    let phoneInput3;
+    document.addEventListener("DOMContentLoaded", function () {
+
+        phoneInput1 = window.intlTelInput(
+            document.querySelector("#Phone1"),
+            {
+                initialCountry: "in",
+                separateDialCode: true
+            });
+
+        phoneInput2 = window.intlTelInput(
+            document.querySelector("#Phone2"),
+            {
+                initialCountry: "in",
+                separateDialCode: true
+            });
+
+        phoneInput3 = window.intlTelInput(
+            document.querySelector("#Phone3"),
+            {
+                initialCountry: "in",
+                separateDialCode: true
+            });
+
+    });
+
+
+
+    document.getElementById("FooterForm").addEventListener("submit", async function (e) {
+
+        e.preventDefault();
+
+        const form = document.getElementById("FooterForm");
+
+        const submitBtn = form.querySelector("button[type='submit']");
+
+        const full1 =
+            "+" +
+            phoneInput1.getSelectedCountryData().dialCode +
+            document.getElementById("Phone1").value;
+
+
+        const full2 =
+            "+" +
+            phoneInput2.getSelectedCountryData().dialCode +
+            document.getElementById("Phone2").value;
+
+
+        const full3 =
+            "+" +
+            phoneInput3.getSelectedCountryData().dialCode +
+            document.getElementById("Phone3").value;
+
+
+
+        document.getElementById("Phone1").value = full1;
+        document.getElementById("Phone2").value = full2;
+        document.getElementById("Phone3").value = full3;
+        const formData = new FormData(form);
+
+        submitBtn.disabled = true;
+
+          Swal.fire({
+            title: 'Saving...',
+            text: 'Please wait',
+            allowOutsideClick: false,
+            didOpen: () => Swal.showLoading()
+        });
+
+        try {
+            const response = await fetch('/Footer/SaveFooter', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (!response.ok) {
+                throw new Error("Request failed");
+            }
+
+            const data = await response.json();
+
+            if (data.success) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Saved!',
+                    text: data.message,
+                    confirmButtonText: 'OK'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Failed',
+                    text: data.message
+                });
+            }
+        } catch (err) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Something went wrong while saving'
+            });
+            console.error(err);
+        } finally {
+            submitBtn.disabled = false;
+        }
+
+    });
+</script>

@@ -1,0 +1,47 @@
+﻿@using MakQR.Models.Home
+@model FooterSection
+<footer class="hotel-footer">
+    <div class="footer-box">
+
+        <!-- Left -->
+        <div class="footer-col">
+            <img src="./images/ChatGPT_Image_Feb_3__2026__12_25_12_PM-removebg-preview.png" alt="Hotel Logo">
+            <span class="logo-text1">MAK Hotel</span>
+            <p>
+                <i class="fa-solid fa-location-dot"></i> @Model.Address
+            </p>
+        </div>
+
+        <!-- Middle -->
+        <div class="footer-col contact">
+
+            <p> <i class="fa-solid fa-phone"></i> @Model.Phone1 </p>
+            <p> <i class="fa-solid fa-phone"></i> @Model.Phone2 </p>
+            <p> <i class="fa-solid fa-phone"></i> @Model.Phone3 </p>
+
+
+            <p><i class="fa-solid fa-envelope"></i> @Model.Email</p>
+        </div>
+
+        <!-- Right -->
+        <div class="footer-col social">
+            <h4>Follow Us</h4>
+            <div class="icons">
+                <span> <a href="@Model.Facebook"><i class="fa-brands fa-facebook-f"></i></a></span>
+                <span> <a href="@Model.Instagram"><i class="fa-brands fa-instagram"></i> </a></span>
+                <span> <a href="@Model.Linkedin"><i class="fa-brands fa-linkedin-in"></i></a></span>
+
+            </div>
+        </div>
+    </div>
+
+    <p class="tagline">
+        @Model.TagLine
+    </p>
+
+    <div class="line"></div>
+
+    <p class="copy">
+        © 2026 MAKHotel. All Rights Reserved.
+    </p>
+</footer>

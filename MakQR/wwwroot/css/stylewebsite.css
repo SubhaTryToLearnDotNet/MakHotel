@@ -48,7 +48,11 @@ body{
     font-family: "Georgia", serif;
     padding-left: 15px;
 }
-
+.logo-header p{
+  color: #eb9a0a;
+  font-size: 14px;
+  font-weight: 500;
+}
 /* Banner */
 .banner-img{
   height: 100vh;
@@ -70,6 +74,7 @@ body{
 .banner-content h1{
   font-size: 3rem;
   font-weight: 700;
+  font-family: "Georgia", serif;
 }
 
 .carousel-caption {
@@ -118,6 +123,7 @@ body{
   font-size: 17px;
   line-height: 1.9;
   color: #555;
+  font-family: "Georgia", serif;
 }
 
 /* Image */
@@ -181,6 +187,7 @@ body{
   margin-bottom: 20px;
   color: #5a4a3a;
   letter-spacing: 0.5px;
+  font-family: "Georgia", serif;
 }
 
 .why-text p {
@@ -188,6 +195,7 @@ body{
   line-height: 1.8;
   color: #4a5568;
   max-width: 540px;
+  font-family: "Georgia", serif;
 }
 
 .why-text .website {
@@ -247,18 +255,20 @@ body{
    font-size: 38px;
   color: #5a4a3a;
   margin-bottom: 20px;
+  font-family: "Georgia", serif;
 }
 .amenities-section p{
 margin-bottom: 40px;
 font-size: 15px;
+font-family: "Georgia", serif;
 }
 
 /* Grid */
 .amenities-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   
-  gap: 35px 50px;
+  gap: 25px 30px;
   
   
 }
@@ -392,12 +402,14 @@ font-size: 15px;
   letter-spacing: 2px;
   margin-bottom: 10px;
    color: #5a4a3a;
+   font-family: "Georgia", serif;
 }
 
 .rooms-subtitle {
   font-size: 15px;
   margin-bottom: 50px;
   color: #666;
+  font-family: "Georgia", serif;
 }
 
 .rooms-grid {
@@ -434,12 +446,14 @@ font-size: 15px;
   font-size: 24px;
   margin-bottom: 10px;
    color: #5a4a3a;
+   font-family: "Georgia", serif;
 }
 
 .room-text p {
   font-size: 15px;
   color: #555;
   line-height: 1.6;
+  font-family: "Georgia", serif;
 }
 
 /* Responsive */
@@ -459,6 +473,7 @@ font-size: 15px;
    font-size: 38px;
   margin-bottom: 10px;
    color: #5a4a3a;
+   font-family: "Georgia", serif;
 }
 
 .view-section p {
@@ -466,6 +481,7 @@ font-size: 15px;
   margin: 0 auto 40px;
   font-size: 15px;
   color: #555;
+  font-family: "Georgia", serif;
 }
 
 .view-grid {
@@ -531,6 +547,7 @@ font-size: 15px;
   font-size: 17px;
   line-height: 1.9;
   color: #555;
+  font-family: "Georgia", serif;
 }
 
 /* Image */
@@ -582,6 +599,7 @@ font-size: 15px;
   margin-bottom: 40px;
    font-size: 38px;
     color: #5a4a3a;
+    font-family: "Georgia", serif;
 }
 
 .gallery-grid {
@@ -658,6 +676,7 @@ margin-top:10px;
 .location-section h2 {
   margin-bottom: 25px;
   font-size: 28px;
+  font-family: "Georgia", serif;
 }
 
 .location-section ul {
@@ -790,127 +809,137 @@ margin-top:10px;
     min-height: 300px;
   }
 }
-.luxury-footer {
-  background:linear-gradient(to bottom, #f0ede7, #c9c5bd);
-  
-}
+.hotel-footer {
+   background: #f6f1ed;
 
-.footer-container {
-  max-width: 1200px;
-  margin: auto;
- 
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 30px;
-  padding: 40px 0;
-  
+    color: #845806;
+    padding: 50px 20px 25px;
+    font-family: "Georgia", serif;
 }
 
 .footer-box {
-  flex: 1;
-  min-width: 250px;
-  color: #7a5a3a;
-  align-items: center;
-  margin: auto;
-  
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1100px;
+    margin: auto;
+    gap: 40px;
+    flex-wrap: wrap;
 }
 
-/* WRAP logo + text together */
-.logo-wrap1 {
-    display: inline-block;
+/* Left */
+.footer-col{
+  display: inline-block;
     padding-left: 5px; /* SAME as image earlier */
 }
-
-    /* Logo image */
-    .logo-wrap1 img {
-        height: 150px;
+.footer-col img {
+    width: 100%;
+  
+    height: 150px;
         display: block;
-         transition: transform 0.4s ease;
-    }
-.logo-wrap1:hover {
-  transform: scale(1.1) rotate(3deg);
 }
 
-
-/* Text below logo */
 .logo-text1 {
-    display: block;
+   display: block;
     margin-top: -20px;
     font-size: 18px;
     font-weight: 600;
     letter-spacing: 1.5px;
     color: #d4af37; /* GOLD */
-    font-family: "Georgia", serif;
-    padding-left: 15px;
+   
+    padding-left: 65px;
+}
+
+.footer-col p {
+    margin-top: 15px;
+    line-height: 1.6;
+    font-size: 14px;
 }
 
 
-.footer-box p {
-  margin: 6px 0;
-  font-size: 13px;
-  color: #7a5a3a;
-  padding-left: 40%;
+/* Middle */
+.contact{
+  padding-top: 30px;
 }
-.footer-boxph{
-   margin: 6px 0;
-  font-size: 13px;
-  color: #7a5a3a;
-  padding-left: 32%;
+.contact p {
+    margin: 10px 0;
+    font-size: 15px;
 }
-.footer-box :hover{
-  color: #e7811a;
-  font-size: 16px;
+.contact p:hover{
+   font-size: 18px;
+  font-weight: 600;
+  color: #5a4a3a;
 }
-
-.social-box {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding-left: 7%;
+.contact i {
+    color: #f5c56b;
+    margin-right: 8px;
 }
-
-.social-box a {
-  width: 42px;
-  height: 42px;
-  border: 1px solid #d6b56d;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #d6b56d;
-  text-decoration: none;
-  font-size: 18px;
-  transition: 0.3s;
+.contact i:hover{
+   font-size: 18px;
+  font-weight: 600;
+  color: #5a4a3a;
 }
 
-.social-box a:hover {
-  background: #d6b56d;
-  color: #000;
+/* Right */
+.social{
+  padding-top: 25px;
+}
+.social h4 {
+    margin-bottom: 12px;
+    color: #f5c56b;
 }
 
-.footer-bottom {
-  text-align: center;
-  padding: 15px;
-  font-size: 13px;
-  color: #999;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  margin-top: 30px;
-  border-top: 2px solid #302204;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .footer-container {
-    flex-direction: column;
+.icons span {
+    display: inline-block;
+    margin-right: 10px;
+    width: 38px;
+    height: 38px;
+    background: #f3b2b2;
+    border-radius: 50%;
     text-align: center;
-  }
-
-  .social-box {
-    justify-content: center;
-  }
+    line-height: 38px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
+.icons span:hover {
+    background: #f5c56b;
+    color: #111;
+}
+
+/* Bottom */
+.tagline {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 18px;
+    color: #5a4a3a;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    background: #f5c56b;
+    margin: 15px 0;
+}
+
+.copy {
+    text-align: center;
+    font-size: 13px;
+    color: #1f0606;
+}
+
+/* 📱 Mobile Responsive */
+@media (max-width: 768px) {
+    .footer-box {
+        flex-direction: column;
+        text-align: center;
+        gap: 25px;
+    }
+
+    .icons span {
+        margin: 5px;
+    }
+}
 /* Layout */
 .map-layout {
     display: flex;

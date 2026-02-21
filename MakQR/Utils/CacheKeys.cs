@@ -1,4 +1,4 @@
-﻿namespace MakQR.Models.Common
+﻿namespace MakQR.Utils
 {
     public static class CacheKeys
     {
@@ -10,5 +10,7 @@
         public const string Facility = "FACILITY_GALLERY_CACHE";
         public const string Reviews = "REVIEWS_CACHE";
         public const string HomeBanner = "HOMEBANNER_CACHE";
+        public const string FooterSection = "FOOTER_CACHE";
+        public const string AmenitiesSection = "AMENITIES_CACHE";
     }
 }

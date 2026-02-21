@@ -1,15 +1,11 @@
-﻿@using MakQR.Models.Admin
-@{
-    ViewData["Title"] = "AddHotelOverview";
-}
-@model HotelSectionViewModel
-
+﻿@using MakQR.Models.Dtos
+@model HomeAboutUsSectionRequestDto
 <div class="admin-page">
     <div class="hotel-form-card">
 
-        <h3 class="form-title">Hotel Overview Section</h3>
+        <h3 class="form-title">Hotel About Us Section</h3>
 
-        <form id="hotelForm"
+        <form id="AboutUsForm"
               method="post"
               enctype="multipart/form-data"
               class="hotel-form">
@@ -21,7 +17,7 @@
 
             <div class="form-group">
                 <label>Description</label>
-                <textarea asp-for="Description"
+                <textarea asp-for="DescriptionHtml"
                           class="form-control"
                           rows="4"></textarea>
             </div>
@@ -31,22 +27,7 @@
 
                 <div class="row g-3">
                     <div class="col-md-4">
-                        <input asp-for="Image1" type="file" class="form-control file-input" />
-                    </div>
-                    <div class="col-md-4">
-                        <input asp-for="Image2" type="file" class="form-control file-input" />
-                    </div>
-                    <div class="col-md-4">
-                        <input asp-for="Image3" type="file" class="form-control file-input" />
-                    </div>
-                    <div class="col-md-4">
-                        <input asp-for="Image4" type="file" class="form-control file-input" />
-                    </div>
-                    <div class="col-md-4">
-                        <input asp-for="Image5" type="file" class="form-control file-input" />
-                    </div>
-                    <div class="col-md-4">
-                        <input asp-for="Image6" type="file" class="form-control file-input" />
+                        <input asp-for="AboutUsImage" type="file" class="form-control file-input" />
                     </div>
                 </div>
             </div>
@@ -58,13 +39,11 @@
         </form>
     </div>
 </div>
-
-
 <script>
-    document.getElementById("hotelForm").addEventListener("submit", async function (e) {
+    document.getElementById("AboutUsForm").addEventListener("submit", async function (e) {
         e.preventDefault();
 
-        const form = document.getElementById("hotelForm");
+        const form = document.getElementById("AboutUsForm");
         const submitBtn = form.querySelector("button[type='submit']");
         const formData = new FormData(form);
 
@@ -78,7 +57,7 @@
         });
 
         try {
-            const response = await fetch('/Admin/SaveSection', {
+            const response = await fetch('/Admin/AddAboutUsSection', {
                 method: 'POST',
                 body: formData
             });
@@ -97,7 +76,7 @@
                     confirmButtonText: 'OK'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        window.location.href = '/Qr';
+                        window.location.reload();
                     }
                 });
             } else {
@@ -119,8 +98,6 @@
         }
     });
 </script>
-
-
 
 
 

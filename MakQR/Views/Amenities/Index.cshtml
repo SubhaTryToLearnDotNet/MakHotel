@@ -1,0 +1,163 @@
+﻿@using MakQR.Models.Home
+@model AmenitiesModel
+
+<div class="admin-page">
+    <div class="hotel-form-card">
+        <h3 class="form-title">Amenities Section</h3>
+        <form id="AmenitiesForm">
+            <div class="mb-3">
+                <label>Title</label>
+                <input value="@Model.Title" name="Title" class="form-control" placeholder="Amenities Section Title" />
+            </div>
+
+            <div class="mb-3">
+                <label>Sub Title</label>
+                <input value="@Model.SubTitle" name="SubTitle" class="form-control" placeholder="SubTitle" />
+            </div>
+
+           @*  <h4>Amenities</h4>
+            <div id="amenities-wrapper">
+                <!-- Existing amenities will be here -->
+                @for (int i = 0; i < (Model.Amenities?.Count ?? 0); i++)
+                {
+                    <div class="row mb-2 amenity-row">
+                        <div class="col-2">
+                            <input name="Amenities[@i].Icon" value="@Model.Amenities[i].Icon" class="form-control" placeholder="Icon" />
+                        </div>
+                        <div class="col-8">
+                            <input name="Amenities[@i].Title" value="@Model.Amenities[i].Title" class="form-control" placeholder="Title" />
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-danger remove-amenity">Remove</button>
+                        </div>
+                    </div>
+                }
+            </div> *@
+
+            <h4>Amenities (10 Rows)</h4>
+            <div id="amenities-wrapper">
+                @for (int i = 0; i < 10; i++)
+                {
+                    var icon = (Model.Amenities != null && i < Model.Amenities.Count) ? Model.Amenities[i].Icon : "";
+                    var title = (Model.Amenities != null && i < Model.Amenities.Count) ? Model.Amenities[i].Title : "";
+
+                    <div class="row mb-2 amenity-row">
+                        <div class="col-2">
+                            <input name="Amenities[@i].Icon" value="@icon" class="form-control" placeholder="Icon (Emoji)" />
+                        </div>
+                        <div class="col-8">
+                            <input name="Amenities[@i].Title" value="@title" class="form-control" placeholder="Title" />
+                        </div>
+                    </div>
+                }
+            </div>
+            <button type="submit" class="btn btn-success">Save Amenities</button>
+        </form>
+    </div>
+
+</div>
+@section Scripts {
+    <script>
+        // let counter = @Model.Amenities?.Count ?? 0;
+
+        // document.getElementById('add-amenity').addEventListener('click', function () {
+        //     const wrapper = document.getElementById('amenities-wrapper');
+
+        //     const div = document.createElement('div');
+        //     div.className = 'row mb-2 amenity-row';
+        //     div.innerHTML = `
+        //         <div class="col-2">
+        //             <input name="Amenities[${counter}].Icon" class="form-control" placeholder="Icon"/>
+        //         </div>
+        //         <div class="col-8">
+        //             <input name="Amenities[${counter}].Title" class="form-control" placeholder="Title"/>
+        //         </div>
+        //         <div class="col-2">
+        //             <button type="button" class="btn btn-danger remove-amenity">Remove</button>
+        //         </div>
+        //     `;
+        //     wrapper.appendChild(div);
+        //     counter++;
+        // });
+
+        // document.addEventListener('click', function (e) {
+        //     if (e.target && e.target.classList.contains('remove-amenity')) {
+        //         e.target.closest('.amenity-row').remove();
+        //     }
+        // });
+
+
+                document.getElementById("AmenitiesForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const form = document.getElementById("AmenitiesForm");
+            const submitBtn = form.querySelector("button[type='submit']");
+
+            submitBtn.disabled = true;
+
+            Swal.fire({
+                title: 'Saving...',
+                text: 'Please wait',
+                allowOutsideClick: false,
+                didOpen: () => Swal.showLoading()
+            });
+
+            try {
+
+                const model = {
+                    Title: form.querySelector('input[name="Title"]').value,
+                    SubTitle: form.querySelector('input[name="SubTitle"]').value,
+                    Amenities: []
+                };
+
+                document.querySelectorAll('.amenity-row').forEach(row => {
+                    const icon = row.querySelector('input[name*=".Icon"]').value;
+                    const title = row.querySelector('input[name*=".Title"]').value;
+
+                    if (icon && title) {
+                        model.Amenities.push({ Icon: icon, Title: title });
+                    }
+                });
+
+                const response = await fetch('/Amenities/SaveAmenitiesJson', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(model)
+                });
+
+                if (!response.ok) throw new Error("Request failed");
+
+                const data = await response.json();
+
+                if (data.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Saved!',
+                        text: data.message,
+                        confirmButtonText: 'OK'
+                    }).then(result => {
+                        if (result.isConfirmed) {
+                            window.location.reload(); // Or reload grid only
+                        }
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Failed',
+                        text: data.message
+                    });
+                }
+
+            } catch (err) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Something went wrong while saving'
+                });
+                console.error(err);
+            } finally {
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+}

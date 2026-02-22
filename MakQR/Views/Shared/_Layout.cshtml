@@ -90,7 +90,18 @@
                             <i class="fas fa-star me-2"></i> Reviews
                         </a>
                     </li>
-
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white @(currentController == "Amenities" ? "active bg-primary" : "")"
+                           asp-controller="Amenities" asp-action="Index">
+                            <i class="fas fa-concierge-bell me-2"></i> Amenities
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white @(currentController == "GoogleSettings" ? "active bg-primary" : "")"
+                           asp-controller="GoogleSettings" asp-action="Index">
+                            <i class="fas fa-map-marked-alt me-2"></i>Google Settings
+                        </a>
+                    </li>
                     <li class="nav-item mb-2">
                         <a class="nav-link text-white @(currentController == "Footer" ? "active bg-primary" : "")"
                            asp-controller="Footer" asp-action="Index">

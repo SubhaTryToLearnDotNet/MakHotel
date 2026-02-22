@@ -12,5 +12,6 @@
         public const string HomeBanner = "HOMEBANNER_CACHE";
         public const string FooterSection = "FOOTER_CACHE";
         public const string AmenitiesSection = "AMENITIES_CACHE";
+        public const string GoogleSettings = "GOOGLESETTINGS_CACHE";
     }
 }

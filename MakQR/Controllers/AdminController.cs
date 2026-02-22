@@ -3,8 +3,6 @@ using MakQR.Models.Config;
 using MakQR.Models.Dto;
 using MakQR.Models.Dtos;
 using MakQR.Models.Home;
-using MakQR.Services;
-using MakQR.Services.Interfaces.Home;
 using MakQR.Utils;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -14,19 +12,21 @@ using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
 using System.Security.Claims;
 using System.Text.Json;
-using static MakQR.Models.Home.RoomsSection;
 using static System.Collections.Specialized.BitVector32;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+
 
 namespace MakQR.Controllers
 {
     public class AdminController(
         IOptions<Appconfig> appConfig,
-        IWebHostEnvironment env) : Controller
+        IWebHostEnvironment env,
+        IMemoryCache cache) : Controller
 
     {
         private readonly Appconfig _appConfig = appConfig.Value;
         private readonly IWebHostEnvironment _env = env;
+        private readonly IMemoryCache _cache = cache;
         #region Admin Login
         public IActionResult Index()
         {
@@ -78,6 +78,7 @@ namespace MakQR.Controllers
         }
 
         #endregion
+     
 
 
         #region Qr
@@ -129,42 +130,6 @@ namespace MakQR.Controllers
                     success = true,
                     message = "Details updated successfully"
                 });
-            }
-            catch (Exception ex)
-            {
-                return Json(new
-                {
-                    success = false,
-                    message = "Failed to update details",
-                    error = ex.Message
-                });
-            }
-        }
-        #endregion
-
-
-
-        #region Facility Gallery Section
-        [HttpGet]
-        [Authorize(Roles = RoleNames.Admin)]
-        public async Task<IActionResult> Facility()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [Authorize(Roles = RoleNames.Admin)]
-        public async ValueTask<IActionResult> AddFacilitySection(FacilityGalleryRequestDto request)
-        {
-            try
-            {
-                if (!ModelState.IsValid) { return BadRequest(); }
-                var imageFolder = Path.Combine(_env.WebRootPath, "images");
-
-                await AppHelper.ReplaceIfUploaded(request.Image, "gallery_img.png", imageFolder);
-                await AppHelper.ReplaceIfUploaded(request.Image1, "gallery_img1.png", imageFolder);
-                await AppHelper.ReplaceIfUploaded(request.Image2, "gallery_img2.png", imageFolder);
-                return Json(new { success = true, message = "Details updated successfully" });
             }
             catch (Exception ex)
             {

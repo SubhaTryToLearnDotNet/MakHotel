@@ -1,0 +1,85 @@
+﻿@using MakQR.Controllers
+@model GoogleSettings
+
+<div class="admin-page">
+    <div class="hotel-form-card">
+        <h3 class="form-title">Google Settings</h3>
+        <form id="googleForm"
+              method="post"
+              class="hotel-form">
+            <label>API Key</label>
+
+            <input asp-for="GoogleApiKey"
+                   class="form-control" />
+
+            <br />
+
+            <button type="submit" class="btn btn-success">
+
+                Save
+
+            </button>
+
+        </form>
+    </div>
+</div>
+<script>
+    document.getElementById("googleForm").addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const form = document.getElementById("googleForm");
+        const submitBtn = form.querySelector("button[type='submit']");
+        const formData = new FormData(form);
+
+        submitBtn.disabled = true;
+
+        Swal.fire({
+            title: 'Saving...',
+            text: 'Please wait',
+            allowOutsideClick: false,
+            didOpen: () => Swal.showLoading()
+        });
+
+        try {
+            const response = await fetch('/Admin/GoogleSettings', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (!response.ok) {
+                throw new Error("Request failed");
+            }
+
+            const data = await response.json();
+
+            if (data.success) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Saved!',
+                    text: data.message,
+                    confirmButtonText: 'OK'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Failed',
+                    text: data.message
+                });
+            }
+        } catch (err) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Something went wrong while saving'
+            });
+            console.error(err);
+        } finally {
+            submitBtn.disabled = false;
+        }
+    });
+</script>
+

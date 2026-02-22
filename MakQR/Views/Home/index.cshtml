@@ -112,21 +112,7 @@
 
     @await Component.InvokeAsync("HomeEvent")
 
-    <section class="gallery-section">
-        <h2>Facility And Gallery</h2>
-
-        <div class="gallery-grid">
-            <div class="gallery-card">
-                <img src="./images/gallery_img.png" alt="">
-            </div>
-            <div class="gallery-card">
-                <img src="./images/gallery_img1.png" alt="">
-            </div>
-            <div class="gallery-card">
-                <img src="./images/gallery_img2.png" alt="">
-            </div>
-        </div>
-    </section>
+    @await Component.InvokeAsync("Facility")
 
     @await Component.InvokeAsync("HomeReview")
 
@@ -201,7 +187,7 @@
         errorBox.innerText = "";
         resultBox.innerHTML = "Calculating...";
 
-        fetch('/Home/GetDistanceAjax', {
+        fetch('/Home/GetDistance', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -211,7 +197,7 @@
         .then(res => res.json())
         .then(data => {
             if (data.success) {
-                resultBox.innerHTML = `<strong>${data.distance}</strong><br/>Km`;
+                resultBox.innerHTML = `<strong>${data.distance}</strong>`;
             } else {
                 resultBox.innerHTML = "Result<br/>Km";
                 errorBox.innerText = data.message;
@@ -219,7 +205,7 @@
         })
         .catch(() => {
             resultBox.innerHTML = "Result<br/>Km";
-            errorBox.innerText = "Something went wrong";
+            errorBox.innerText = "No data found";
         });
     }
 </script>

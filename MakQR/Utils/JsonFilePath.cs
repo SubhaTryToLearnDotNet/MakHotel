@@ -27,5 +27,10 @@
 
         public static string AmenitiesFilePath(IWebHostEnvironment env) =>
          Path.Combine(env.ContentRootPath, ContentData, "amenities.json");
+
+        public static string FacilityGalleryFilePath(IWebHostEnvironment env) =>
+           Path.Combine(env.ContentRootPath, ContentData, "facility.json");
+        public static string GoogleSettingFilePath(IWebHostEnvironment env) =>
+       Path.Combine(env.ContentRootPath, ContentData, "googleSettings.json");
     }
 }

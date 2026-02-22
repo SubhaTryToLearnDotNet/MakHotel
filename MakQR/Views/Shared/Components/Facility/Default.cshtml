@@ -1,0 +1,21 @@
+﻿@using MakQR.Models.Home
+@model FacilityGallerySection
+
+<section class="gallery-section">
+    <h2>@Model.Title</h2>
+
+    <div class="gallery-grid">
+        <div class="gallery-card">
+            <img src="./images/gallery_img.png" asp-append-version="true" alt="">
+            <h5>@Model.Caption1</h5>
+        </div>
+        <div class="gallery-card">
+            <img src="./images/gallery_img1.png" asp-append-version="true" alt="">
+            <h5>@Model.Caption2</h5>
+        </div>
+        <div class="gallery-card">
+            <img src="./images/gallery_img2.png" asp-append-version="true" alt="">
+            <h5>@Model.Caption3</h5>
+        </div>
+    </div>
+</section>

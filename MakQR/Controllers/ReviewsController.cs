@@ -1,12 +1,10 @@
-﻿using MakQR.Models.Config;
-using MakQR.Models.Dtos;
+﻿using MakQR.Models.Dtos;
 using MakQR.Models.Home;
 using MakQR.Services.Interfaces.Home;
 using MakQR.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Options;
 using System.Text.Json;
 
 namespace MakQR.Controllers

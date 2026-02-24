@@ -88,7 +88,7 @@ namespace MakQR.Controllers
             return Json(new
             {
                 success = true,
-                message = "Review deleted successfully"
+                message = "Slider update successfully"
             });
         }
     }

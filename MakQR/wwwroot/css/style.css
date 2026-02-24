@@ -26,6 +26,17 @@
   );
 }
 
+.logo-text {
+    display: block;
+    margin-top: -40px;
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: #d4af37; /* GOLD */
+    font-family: "Georgia", serif;
+    padding-left: 15px;
+}
+
 /* CONTENT */
 .hero-content {
   position: relative;
@@ -60,7 +71,7 @@
   }
 
   .hero-logo {
-    width: 80px;
+    width: 200px;
   }
 
   .hero-content h1 {

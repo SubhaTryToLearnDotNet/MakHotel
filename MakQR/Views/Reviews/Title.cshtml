@@ -1,0 +1,88 @@
+﻿@using MakQR.Models.Dtos
+@model ReviewHeaderRequest 
+<div class="admin-page">
+    <div class="hotel-form-card">
+
+        <h3 class="form-title">Update Review Header</h3>
+
+        <form id="ReviewForm"
+              method="post"
+              enctype="multipart/form-data"
+              class="hotel-form">
+
+            <div class="form-group">
+                <label>Section Title (H1)</label>
+                <input asp-for="Title" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label>Sub Title</label>
+                <input value="@Model.Subtitle" name="SubTitle" class="form-control" placeholder="SubTitle" />
+            </div>
+
+
+            <button type="submit" class="btn btn-success save-btn">
+                Save Section
+            </button>
+
+        </form>
+    </div>
+</div>
+<script>
+     document.getElementById("ReviewForm").addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const form = document.getElementById("ReviewForm");
+        const submitBtn = form.querySelector("button[type='submit']");
+        const formData = new FormData(form);
+
+        submitBtn.disabled = true;
+
+        Swal.fire({
+            title: 'Saving...',
+            text: 'Please wait',
+            allowOutsideClick: false,
+            didOpen: () => Swal.showLoading()
+        });
+
+        try {
+            const response = await fetch('/Reviews/Title', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (!response.ok) {
+                throw new Error("Request failed");
+            }
+
+            const data = await response.json();
+
+            if (data.success) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Saved!',
+                    text: data.message,
+                    confirmButtonText: 'OK'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Failed',
+                    text: data.message
+                });
+            }
+        } catch (err) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Something went wrong while saving'
+            });
+            console.error(err);
+        } finally {
+            submitBtn.disabled = false;
+        }
+    });
+</script>

@@ -29,13 +29,73 @@ namespace MakQR.Controllers
             return View(section);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Title()
+        {
+            var filePath = JsonFilePath.ReviewFilePath(_env);
+
+            ReviewsSection section = new ReviewsSection();
+
+            if (System.IO.File.Exists(filePath))
+            {
+                var json = await System.IO.File.ReadAllTextAsync(filePath);
+
+                section = JsonSerializer.Deserialize<ReviewsSection>(
+                    json,
+                    new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    }
+                ) ?? new ReviewsSection();
+            }
+
+            ReviewHeaderRequest response = new ReviewHeaderRequest
+            {
+                Title = section.Title,
+                Subtitle = section.Subtitle
+            };
+
+            return View(response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Title(ReviewHeaderRequest Request)
+        {
+
+            var filePath = JsonFilePath.ReviewFilePath(_env);
+            ReviewsSection section;
+            if (System.IO.File.Exists(JsonFilePath.ReviewFilePath(_env)))
+            {
+                var json = await System.IO.File.ReadAllTextAsync(filePath);
+                section = JsonSerializer.Deserialize<ReviewsSection>(
+                    json,
+                    new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
+                ) ?? new ReviewsSection();
+            }
+            else
+            {
+                section = new ReviewsSection();
+            }
+            section.Title = Request.Title;
+            section.Subtitle = Request.Subtitle;
+            section.UpdatedOn = DateTime.Now;
+            await System.IO.File.WriteAllTextAsync(
+                filePath,
+                JsonSerializer.Serialize(section, new JsonSerializerOptions
+                {
+                    WriteIndented = true
+                })
+            );
+            _cache.Set(CacheKeys.Reviews, section);
+            return Json(new { success = true, message = "Details saved successfully" });
+        }
+
         public IActionResult AddReview()
         {
             return View(new ReviewRequestDto());
         }
 
         [HttpPost]
-        [Authorize(Roles = RoleNames.Admin)]
         public async Task<IActionResult> AddReview(ReviewRequestDto request)
         {
             if (!ModelState.IsValid) { return BadRequest(); }

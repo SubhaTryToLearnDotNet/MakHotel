@@ -16,6 +16,7 @@
 <body>
     @{
         var currentController = ViewContext.RouteData.Values["Controller"]?.ToString();
+        var currentAction = ViewContext.RouteData.Values["Action"]?.ToString();
     }
     @if (!(ViewData["HideMenu"] as bool? ?? false))
     {
@@ -29,8 +30,10 @@
                 <ul class="nav flex-column">
 
                     <li class="nav-item mb-2">
-                        <a class="nav-link text-white @(currentController == "Admin" ? "active bg-primary" : "")"
+                        <a class="nav-link text-white
+                   @(currentController == "Admin" && currentAction == "AddHotelOverview" ? "active bg-primary" : "")"
                            asp-controller="Admin" asp-action="AddHotelOverview">
+
                             <i class="fas fa-qrcode me-2"></i> QR Update
                         </a>
                     </li>
@@ -106,6 +109,14 @@
                         <a class="nav-link text-white @(currentController == "Footer" ? "active bg-primary" : "")"
                            asp-controller="Footer" asp-action="Index">
                             <i class="fas fa-window-maximize me-2"></i> Footer
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white
+               @(currentController == "Admin" && currentAction == "ChangePassword" ? "active bg-primary" : "")"
+                           asp-controller="Admin" asp-action="ChangePassword">
+
+                            <i class="fas fa-key me-2"></i> Change Password
                         </a>
                     </li>
                 </ul>

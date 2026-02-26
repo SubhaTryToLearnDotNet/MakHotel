@@ -45,8 +45,12 @@ namespace MakQR.Controllers
                 });
             }
 
-            if (model.Email == _appConfig.AdminConfig.Email &&
-                model.Password == _appConfig.AdminConfig.Password)
+
+            var jsonPath = JsonFilePath.AdminFilePath(_env);
+            var json = await System.IO.File.ReadAllTextAsync(jsonPath);
+            var admin = JsonSerializer.Deserialize<AdminUser>(json,  new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            if (model.Email == admin?.Username &&
+                model.Password == admin.Password)
             {
                 var claims = new List<Claim>
         {
@@ -78,7 +82,7 @@ namespace MakQR.Controllers
         }
 
         #endregion
-     
+
 
 
         #region Qr
@@ -141,6 +145,138 @@ namespace MakQR.Controllers
                 });
             }
         }
+        #endregion
+
+
+
+
+
+        #region Password Reset
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+
+        public async Task<IActionResult> UpdatePassword([FromBody]  ChangePasswordModel model)
+        {
+
+            if (model.NewPassword != model.ConfirmPassword)
+            {
+                return Json(new
+                {
+                    success = false,
+                    message = "Password not match"
+                });
+            }
+            string fileName = "admin.json";
+
+            var jsonPath = JsonFilePath.AdminFilePath(_env);
+            var json = await System.IO.File.ReadAllTextAsync(jsonPath);
+            var admin = JsonSerializer.Deserialize<AdminUser>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            if (admin.Password != model.OldPassword)
+            {
+
+                return Json(new
+                {
+                    success = false,
+                    message = "Old password wrong"
+                });
+
+            }
+
+            admin.Password = model.NewPassword;
+            await System.IO.File.WriteAllTextAsync(jsonPath, JsonSerializer.Serialize(admin, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }));
+
+
+
+            return Json(new
+            {
+                success = true,
+                message = "Password Updated"
+            });
+
+
+        }
+
+
+
+        //[HttpPost]
+        //public async Task<IActionResult> ResetPassword(string currentPassword, string newPassword)
+        //{
+        //    if (currentPassword != _appConfig.AdminConfig.Password)
+        //    {
+        //        return Json(new
+        //        {
+        //            success = false,
+        //            message = "Current password is incorrect."
+        //        });
+        //    }
+        //    if (string.IsNullOrWhiteSpace(newPassword) || newPassword.Length < 6)
+        //    {
+        //        return Json(new
+        //        {
+        //            success = false,
+        //            message = "New password must be at least 6 characters long."
+        //        });
+        //    }
+        //    try
+        //    {
+        //        // Update the password in the appsettings.json file
+        //        var configPath = Path.Combine(_env.ContentRootPath, "appsettings.json");
+        //        var json = await System.IO.File.ReadAllTextAsync(configPath);
+        //        var jsonDoc = JsonDocument.Parse(json);
+        //        var root = jsonDoc.RootElement.Clone();
+        //        using var stream = new MemoryStream();
+        //        using (var writer = new Utf8JsonWriter(stream, new JsonWriterOptions { Indented = true }))
+        //        {
+        //            writer.WriteStartObject();
+        //            foreach (var property in root.EnumerateObject())
+        //            {
+        //                if (property.NameEquals("AdminConfig"))
+        //                {
+        //                    writer.WritePropertyName("AdminConfig");
+        //                    writer.WriteStartObject();
+        //                    foreach (var adminProp in property.Value.EnumerateObject())
+        //                    {
+        //                        if (adminProp.NameEquals("Password"))
+        //                        {
+        //                            writer.WriteString("Password", newPassword);
+        //                        }
+        //                        else
+        //                        {
+        //                            adminProp.WriteTo(writer);
+        //                        }
+        //                    }
+        //                    writer.WriteEndObject();
+        //                }
+        //                else
+        //                {
+        //                    property.WriteTo(writer);
+        //                }
+        //            }
+        //            writer.WriteEndObject();
+        //        }
+        //        await System.IO.File.WriteAllBytesAsync(configPath, stream.ToArray());
+        //        return Json(new
+        //        {
+        //            success = true,
+        //            message = "Password updated successfully."
+        //        });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return Json(new
+        //        {
+        //            success = false,
+        //            message = "Failed to update password.",
+        //            error = ex.Message
+        //        });
+        //    }
+        //}
         #endregion
 
     }

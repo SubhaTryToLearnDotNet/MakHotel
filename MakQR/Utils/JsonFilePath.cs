@@ -32,5 +32,8 @@
            Path.Combine(env.ContentRootPath, ContentData, "facility.json");
         public static string GoogleSettingFilePath(IWebHostEnvironment env) =>
        Path.Combine(env.ContentRootPath, ContentData, "googleSettings.json");
+
+        public static string AdminFilePath(IWebHostEnvironment env) =>
+     Path.Combine(env.ContentRootPath, ContentData, "admin.json");
     }
 }

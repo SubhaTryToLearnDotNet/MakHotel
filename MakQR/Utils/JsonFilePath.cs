@@ -35,5 +35,8 @@
 
         public static string AdminFilePath(IWebHostEnvironment env) =>
      Path.Combine(env.ContentRootPath, ContentData, "admin.json");
+
+        public static string HeaderFilePath(IWebHostEnvironment env) =>
+       Path.Combine(env.ContentRootPath, ContentData, "header.json");
     }
 }

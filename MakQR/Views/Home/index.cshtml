@@ -22,13 +22,7 @@
 </head>
 <body>
     <!-- LOGO HEADER -->
-    <div class="logo-header">
-        <div class="logo-wrap">
-            <img src="./images/ChatGPT_Image_Feb_3__2026__12_25_12_PM-removebg-preview.png" asp-append-version="true" alt="Hotel Logo">
-            <span class="logo-text">MAK Hotel</span>
-            <p>MAK Enterprise Pvt. Ltd.</p>
-        </div>
-    </div>
+    @await Component.InvokeAsync("Header")
     <!-- Hero Banner -->
     <div id="hotelBanner" class="carousel slide" data-bs-ride="carousel">
 

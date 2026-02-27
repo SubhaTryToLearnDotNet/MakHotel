@@ -147,8 +147,7 @@ namespace MakQR.Controllers
         }
         #endregion
 
-
-
+    
 
 
         #region Password Reset
